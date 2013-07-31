@@ -1,0 +1,20 @@
+{
+  "name": "Project Hatchet",
+  "version": "0.0.1",
+  "private": true,
+  "author": {
+    "name": "Peter Johansson",
+    "email": "peterjohansson420@gmail.com"
+  }
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "3.3.4",
+    "jade": "*"
+  },  
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/apprime/hatchet02.git"
+  }
+}
