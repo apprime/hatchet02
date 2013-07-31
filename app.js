@@ -4,6 +4,11 @@
  */
 var express = require('express')
   , routes = require('./routes')
+  , minion = require('./routes/minion')
+  , achievement = require('./routes/achievement')
+  , ability = require('./routes/ability')
+  , item = require('./routes/item')
+  , tech = require('./routes/tech')
   , user = require('./routes/user')
   , http = require('http')
   , path = require('path');
@@ -27,10 +32,38 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
-//Routes
+//ROUTES
 //each route represents a URL (www.domain.com/URL)
 app.get('/', routes.index);
+app.get('/index', routes.index);
+app.get('/home', routes.index);
+
+//Users
 app.get('/users', user.list);
+app.get('/user/:nr/:name', user.view);
+app.get('/user/:nr/:name/hq', user.hq);
+app.get('/user/:nr/:name/minions', user.minions);
+app.get('/user/:nr/:name/achievements', user.achievements);
+
+//Minions
+app.get('/minions', minion.list);
+app.get('/minion/:name', minion.view);
+
+//Abilities
+app.get('/abilities', ability.list);
+app.get('/ability/:name', ability.view);
+
+//Achivements
+app.get('/achievements', achievement.list);
+app.get('/achievement/:name', achievement.view);
+
+//Items
+app.get('/item', item.list);
+app.get('/item/:name', item.view);
+
+//Tech
+app.get('/tech', tech.list);
+app.get('/tech/:name', tech.view);
 
 //Server runtime listener
 //It listens for connections to your webserver 
