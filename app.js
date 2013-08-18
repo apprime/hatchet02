@@ -2,19 +2,15 @@
 /**
  * Module dependencies.
  */
-var express = require('express')
-  , routes = require('./routes')
-  , minion = require('./routes/minion')
-  , achievement = require('./routes/achievement')
-  , ability = require('./routes/ability')
-  , item = require('./routes/item')
-  , tech = require('./routes/tech')
-  , user = require('./routes/user')
-  , http = require('http')
-  , path = require('path');
 
-//Init
+var express = require('express')
+	, routes = require('./routes')
+	, http = require('http')
+	, path = require('path')
+;
+
 var app = express();
+var MemStore = express.session.MemoryStore;
 
 // all environments
 app.set('port', process.env.PORT || 80);
@@ -24,50 +20,56 @@ app.use(express.favicon());
 app.use(express.logger('dev'));
 app.use(express.bodyParser());
 app.use(express.methodOverride());
+app.use(express.cookieParser());
+app.use(express.session({ 
+	secret: 'Admiral Aardvark, first amongst his kin. Benevolent. Strident. Uncompromising.',
+	store: MemStore({reapInterval: 60000 * 10})
+}));
 app.use(app.router);
+app.use(require('stylus').middleware(__dirname + '/public'));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // development only
 if ('development' == app.get('env')) {
   app.use(express.errorHandler());
+  app.locals.pretty = true;
 }
 
-//ROUTES
-//each route represents a URL (www.domain.com/URL)
 app.get('/', routes.index);
 app.get('/index', routes.index);
-app.get('/home', routes.index);
+app.post('/login', routes.login);
+app.get('/logout', routes.logout);
+app.get('/signup', routes.register);
+app.get('/help', routes.manual);
 
-//Users
-app.get('/users', user.list);
-app.get('/user/:nr/:name', user.view);
-app.get('/user/:nr/:name/hq', user.hq);
-app.get('/user/:nr/:name/minions', user.minions);
-app.get('/user/:nr/:name/achievements', user.achievements);
+app.get('/world', routes.game.world);
+app.get('/hq', routes.game.hq);
 
-//Minions
-app.get('/minions', minion.list);
-app.get('/minion/:name', minion.view);
+app.get('/users', routes.user.list);
+app.get('/user/:nr/:name', routes.user.view);
+app.get('/user/:nr/:name/hq', routes.user.hq);
+app.get('/user/:nr/:name/minions', routes.user.minions);
+app.get('/user/:nr/:name/achievements', routes.user.achievements);
 
-//Abilities
-app.get('/abilities', ability.list);
-app.get('/ability/:name', ability.view);
+app.get('/lexicon', routes.minion.list);
+app.get('/lexicon/:name', routes.minion.view);
 
-//Achivements
-app.get('/achievements', achievement.list);
-app.get('/achievement/:name', achievement.view);
+app.get('/abilities', routes.ability.list);
+app.get('/ability/:name', routes.ability.view);
 
-//Items
-app.get('/item', item.list);
-app.get('/item/:name', item.view);
+app.get('/achievements', routes.achievement.list);
+app.get('/achievement/:name', routes.achievement.view);
 
-//Tech
-app.get('/tech', tech.list);
-app.get('/tech/:name', tech.view);
+app.get('/store', routes.item.list);
+app.get('/store/:name', routes.item.view);
 
-//Server runtime listener
-//It listens for connections to your webserver 
-//and calls the app(express) function on those requests
+app.get('/tech', routes.tech.list);
+app.get('/tech/:name', routes.tech.view);
+
+app.get('/forums', routes.forum.list);
+app.get('/forum/section/:id', routes.forum.view);
+app.get('/forum/thread/:id', routes.forum.view);
+
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });

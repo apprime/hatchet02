@@ -1,0 +1,29 @@
+Account
+	Mail
+	Invites
+	System changes
+Friends
+	Requests
+	Events
+		Acheivements
+		Minions
+		HQ
+		Tech
+Guild
+	Kick
+	Events
+		Acheivements
+		Levelup
+		Tech
+	
+Forum
+	Popular
+	Watched
+	Recent
+
+::::::::::::::::::::::::::::::::::::::::
+
+Announcements
+News
+Articles
+Developer nonsense

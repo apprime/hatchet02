@@ -1,16 +1,16 @@
 
 /*
- * GET List of all users
+ * GET users listing.
  */
 
 exports.list = function(req, res){
   res.send("respond with a resource");
 };
 
-/*
- * GET Single user
- */
 
+/*
+ * GET Single user.
+ */
 exports.view = function(req, res){
 	res.send("This is user " +req.params.name +" and his favourite number " +req.params.nr);
 };

@@ -1,0 +1,6 @@
+1. Login > Asynch loading of splash screen
+2. Get icon for login / pass
+3. Submit on enter
+4. Fix fluid/responsive login <---- Media Queries needed for proper style below 606px
+5. Drop down menu for navigation
+6. Drop down menu responsive

@@ -1,0 +1,22 @@
+extends layout
+
+block content
+	div(id="bar")
+		div(id="menu")
+	div(id="container") 
+		div(id="column")
+			div(id="top")
+				div(id="scene")
+				div(id="list")
+					form(id="login-form", method='post', action='login', class="login")
+						a(onClick="document.forms['login-form'].submit();return false;", class="custom-button") Login				
+						input(type='text', placeholder='name', id='name', class="custom-textfield placeholder-fix")
+						input(id='password', type='password', placeholder='password', class="custom-textfield placeholder-fix")
+				div(id="chat")
+					div(class="login-column")
+						a(href="", name="Sign up", class="custom-button") Sign up	
+						p(class="side-text") Don't forget to sign up if you havn't already
+					div(class="login-column")
+						a(href="help", name="Help", class="custom-button") Help!
+						p(class="side-text") Click here to get some serious help. 
+			div(id="bottom")

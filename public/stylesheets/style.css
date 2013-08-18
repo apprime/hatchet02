@@ -1,8 +1,291 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+/**********
+ * CONFIG *
+ **********/
+/* Z-index enumeration */
+/*************
+ * AGGREGATE *
+ *************/
+/**********
+ * LAYOUT *
+ **********/
+html {
+  max-height: 1080px;
+  height: 100%;
 }
-
-a {
-  color: #00B7FF;
+body {
+  position: relative;
+  font: 14px/1 "Lucida Grande", Helvetica, Arial, sans-serif;
+  z-index: -1;
+  background-color: #f1f1f1;
+  padding: 0px;
+  margin: 0px;
+  height: 100%;
+}
+#bar {
+  position: relative;
+  width: 100%;
+  height: 50px;
+  margin: 0px;
+  padding: 0px;
+  background-color: rgba(255,0,0,0.3);
+}
+#container {
+  z-index: -1;
+  position: relative;
+  max-width: 1080px;
+  witdh: 80%;
+  background-color: #fff;
+  margin: 0 auto;
+  height: 1080px;
+  max-height: 100%;
+}
+#column {
+  position: relative;
+  z-index: -1;
+}
+#top {
+  max-height: 62%;
+  height: 557px;
+  position: relative;
+}
+#backdrop {
+  max-height: 100%;
+  position: absolute;
+  height: 557px;
+  width: 100%;
+  z-index: 1;
+  background-color: #000;
+}
+#scene {
+  z-index: 1;
+  position: relative;
+  max-height: 62%;
+  height: 345px;
+  width: 100%;
+  background-color: rgba(0,255,255,0.3);
+}
+#windshield {
+  max-height: 100%;
+  position: absolute;
+  height: 557px;
+  width: 100%;
+  z-index: 2;
+  background-color: #f00;
+}
+/* Standard controls */
+#controls {
+  z-index: 2;
+  position: relative;
+  width: 100%;
+  max-height: 38%;
+  height: 212px;
+  background-color: rgba(0,0,255,0.3);
+}
+#controls .side {
+  width: 33%;
+  height: 100%;
+  float: left;
+}
+#controls .mid {
+  width: 34%;
+  height: 100%;
+  float: left;
+  background-color: rgba(0,0,255,0.1);
+}
+#controls .top {
+  height: 62%;
+}
+#controls .bottom {
+  height: 38%;
+  background-color: rgba(0,0,255,0.1);
+}
+#bottom {
+  position: relative;
+  max-height: 38%;
+  height: 345px;
+  width: 100%;
+  display: block;
+  margin: 0px;
+  padding: 0px;
+  clear: both;
+  float: left;
+  background-color: rgba(30,200,30,0.7);
+}
+#list {
+  width: 410px;
+  height: 100%;
+  max-width: 38%;
+  position: relative;
+  float: left;
+  background-color: rgba(0,255,0,0.7);
+}
+#chat {
+  width: 670px;
+  height: 100%;
+  max-width: 62%;
+  position: relative;
+  float: left;
+  background-color: rgba(0,255,30,0.7);
+}
+/* Menu */
+#menu {
+  position: relative;
+  max-width: 1080px;
+  height: 50px;
+  margin: 0 auto;
+  background-color: rgba(255,0,0,0.7);
+}
+#menu ul,
+#menu li {
+  list-style-type: none;
+  line-height: 20px;
+  display: inline-block;
+  margin: 0.5em 0.5em 0em 0.5em;
+}
+#menu li a {
+  text-decoration: none;
+  font-size: 1.8em;
+}
+/* login */
+.login-column {
+  width: 50%;
+  float: left;
+}
+/*****************
+ * SPLASH SCREEN * 
+ *****************/
+.display-table {
+  display: table;
+}
+.display-cell {
+  display: table-cell;
+  vertical-align: middle;
+  table-layout: fixed;
+  width: 100%;
+  background: url("http://dummyimage.com/300.png/09f/fff");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: 50% 50%;
+}
+.splash-button {
+  margin: 0 auto;
+  display: block;
+  height: 38%;
+  width: 38%;
+  background: url("http://dummyimage.com/300.png/f90/fff");
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: contain;
+  cursor: pointer;
+  position: relative;
+}
+.splash-button:hover {
+  top: 1px;
+}
+.splash-button:active {
+  width: 100%;
+  height: 100%;
+  transition: height 1s, width 1s;
+  -moz-transition: height 1s, width 1s;
+  -webkit-transition: height 1s, width 1s;
+  -o-transition: height 1s, width 1s;
+  -moz-transition: height 1s, width 1s;
+  -webkit-transition: height 1s, width 1s;
+  -o-transition: height 1s, width 1s;
+}
+.splash-big {
+  width: 62%;
+  height: 62%;
+}
+/********
+ * MISC *
+ ********/
+.login-lower {
+  float: left;
+  width: 33%;
+}
+.side-text {
+  margin: 0 0 0 0;
+  text-align: center;
+  padding: 1em 1em 1em 1em;
+  font-size: 1.4em;
+}
+input.custom-textfield {
+  background: #fff;
+  box-sizing: border-box;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  -moz-box-shadow: 0 0 5px #ddd inset;
+  -webkit-box-shadow: 0 0 5px #ddd inset;
+  box-shadow: 0 0 5px #ddd inset;
+  color: #666;
+  font-size: 1.5em;
+  padding: 0.7em 0.7em 0.7em 0.7em;
+  margin: 0.8em auto -0.5em auto;
+  width: 90%;
+  display: block;
+  outline: none;
+}
+.login input.custom-textfield {
+  position: relative;
+}
+/* Buttons */
+.custom-button {
+  transition: background-color 0.1s;
+  -moz-transition: background-color 0.1s;
+  -webkit-transition: background-color 0.1s;
+  -o-transition: background-color 0.1s;
+  transition: color 0.2s;
+  -moz-transition: color 0.2s;
+  -webkit-transition: color 0.2s;
+  -o-transition: color 0.2s;
+  -moz-box-shadow: 0px 2px 2px 0px #000;
+  -webkit-box-shadow: 0px 2px 2px 0px #000;
+  box-shadow: 0px 2px 2px 0px #000;
+  border-radius: 5px;
+  background-color: #9000f0;
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.5em;
+  padding: 0.7em 0.7em 0.7em 0.7em;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+  max-width: 80%;
+  width: 80px;
+  display: block;
+  margin: 0 auto;
+}
+.custom-button:hover {
+  background-color: #60f;
+  transition: background-color 0.1s;
+  -moz-transition: background-color 0.1s;
+  -webkit-transition: background-color 0.1s;
+  -o-transition: background-color 0.1s;
+}
+.custom-button:active {
+  color: #60f;
+  transition: color 0.2s;
+  -moz-transition: color 0.2s;
+  -webkit-transition: color 0.2s;
+  -o-transition: color 0.2s;
+}
+/*********/
+/* HACKS */
+/*********/
+/* HTML5 Placeholder */
+input::-webkit-input-placeholder {
+  color: #999;
+  font-style: italic;
+}
+input:-moz-placeholder {
+  color: #999;
+  font-style: italic;
+}
+.placeholder-fix:focus::-webkit-input-placeholder {
+  color: transparent;
+}
+.placeholder-fix:focus::-moz-placeholder {
+  color: transparent;
 }

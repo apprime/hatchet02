@@ -1,5 +1,27 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+	div(id="bar")
+		include menu	
+	div(id="container")	
+		div(id="column")
+			div(id="top")
+				div(id="backdrop")
+				div(id="windshield")
+				div(id="scene")
+				div(id="controls")
+					div(class="side display-table")
+						div(class="display-cell")
+							a(class="splash-button", href="hq")
+					div(class="mid display-table")
+						div(class="display-cell")
+							a(class="splash-button splash-big", href="world")
+					div(class="side display-table")
+						div(class="display-cell")
+							a(class="splash-button", href="forums")
+			div(id="bottom")
+				ul
+				each story, headline in socialNews
+					li(class="social-news-item") 
+						h3 #{headline} 
+						p #{story}
